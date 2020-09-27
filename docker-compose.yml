@@ -4,7 +4,7 @@ services:
   frontend:
     build: ./frontend
     container_name: realworld-docker-frontend
-    command: npm run start
+    command: serve -s build -l 3000
     restart: unless-stopped
     ports:
       - "3000:3000"
