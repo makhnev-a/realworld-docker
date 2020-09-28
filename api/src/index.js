@@ -1,6 +1,6 @@
 const express = require('express');
 const {connectDb} = require('./helpers/db');
-const axios require('axios');
+const axios = require('axios');
 const mongoose = require('mongoose');
 const {port, host, db, authApiUrl} = require('./configuration');
 const postSchema = new mongoose.Schema({
@@ -31,6 +31,12 @@ const startServer = () => {
 
 app.get('/test', (req, res) => {
   res.send('Our api server is working correctly');
+});
+
+app.get('/api/testapidata', (req, res) => {
+  res.json({
+    testwithapi: true
+  });
 });
 
 app.get('/testwithauthapi', (req, res) => {

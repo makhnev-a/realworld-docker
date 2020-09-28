@@ -1,6 +1,7 @@
 const express = require('express');
 const {connectDb} = require('./helpers/db');
-const {port, host, db} = require('./configuration');
+const axios = require('axios');
+const {port, host, db, apiUrl} = require('./configuration');
 
 const app = express();
 
@@ -20,6 +21,14 @@ app.get('/api/currentUser', (req, res) => {
   res.json({
     id: "1234",
     email: "foo@gmail.com"
+  });
+});
+
+app.get('/testwithapidata', (req, res) => {
+  axios.get(apiUrl + '/testapidata').then(response => {
+    res.json({
+      testapidata: response.data.testwithapi
+    });
   });
 });
 
